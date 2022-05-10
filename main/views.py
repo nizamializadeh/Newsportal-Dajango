@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.contrib import messages
-
+from accounts.decorators import group_required
 from .models import News,Category,Comment
 
+
+@group_required("Manager")
 def home(request):
     first_news=News.objects.first()
     three_news=News.objects.all()[1:3]

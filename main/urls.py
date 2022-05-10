@@ -2,10 +2,11 @@ from django.urls import path
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 
 from . import views
 urlpatterns=[
-    path('',views.home,name='home'),
+    path('', login_required(views.home),name='home'),
     path('all-news',views.all_news,name='all-news'),
     path('detail/<int:id>',views.detail,name='detail'),
     path('all-category',views.all_category,name='all-category'),
